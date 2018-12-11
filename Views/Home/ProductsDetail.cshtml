@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Product Page";
+}
+@model ProductsAndCatagories.Models.Product
+<h1 class="text-center">@ViewBag.productName</h1>
+<div class="halfdiv">
+    <h3>Categories:</h3>
+    @foreach (var cat in ViewBag.RelatedCategories.Associations)
+    {
+        <p>@cat.Category.Name</p>
+    }
+</div>
+<div class="halfdiv">
+    <h3>Add Category:</h3>
+    <form asp-action="AttachCat" asp-controller="Home" asp-route-id=@ViewBag.id method="post">
+        <select name="CategoryId">
+            @foreach (var cat in ViewBag.Categories)
+            {
+                <option value=@cat.CategoryId>@cat.Name @cat.CategoryId</option>
+            }
+        </select>
+        <button>Add</button>
+    </form>
+</div>

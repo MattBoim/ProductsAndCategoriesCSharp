@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Products";
+}
+@model ProductsAndCatagories.Models.Product
+<h1 class="text-center">Products | <a href="/categories">Categories</a></h1>
+<div class="halfdiv">
+    <h1>New Product</h1>
+    <form asp-action="AddProduct" asp-controller="Home" method="post">
+        <span asp-validation-for="Name"></span>
+        <p>Name <input type="text" asp-for="Name"></p>
+        <span asp-validation-for="Description"></span>
+        <p>Description <input type="text" asp-for="Description"></p>
+        <span asp-validation-for="Price"></span>
+        <p>Price <input type="float" asp-for="Price"></p>
+        <button>Create</button>
+    </form>
+</div>
+<div class="halfdiv">
+    <h1>Existing Products</h1>
+    @foreach (var product in ViewBag.Products)
+    {
+        <a href="/products/@product.ProductId">@product.Name</a>
+        <br>
+    }
+</div>
+

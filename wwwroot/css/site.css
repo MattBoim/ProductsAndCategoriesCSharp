@@ -1,0 +1,7 @@
+/*Write all of your CSS here*/
+.halfdiv{
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+    text-align: center;
+}
